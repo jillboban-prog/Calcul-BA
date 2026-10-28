@@ -1,0 +1,20 @@
+# Configuration Render (« Blueprint ») : Render lit ce fichier et crée le service.
+# Guide pas à pas : DEPLOIEMENT.md
+services:
+  - type: web
+    name: calculba
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r requirements-server.txt
+    # --proxy-headers : l'adresse IP réelle des visiteurs (limites de connexion et d'inscription)
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips="*"
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: DATABASE_URL           # adresse de la base Neon (demandée à la création)
+        sync: false
+      - key: CALCULBA_INVITE_CODE   # code à donner aux personnes invitées (laisser vide = inscription libre)
+        sync: false
+      - key: CALCULBA_SECURE_COOKIES
+        value: "1"
