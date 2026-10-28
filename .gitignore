@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+calculba.db
+calculba.db-wal
+calculba.db-shm
+node_modules/
+
+# Partage / sauvegardes
+sauvegardes/
+outils/
+*.db
+*.db-wal
+*.db-shm
+.env
