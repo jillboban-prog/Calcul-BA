@@ -1,0 +1,5 @@
+# Dépendances pour l'hébergement en ligne (Render + base PostgreSQL Neon).
+# Sur votre PC, requirements.txt suffit (SQLite).
+-r requirements.txt
+psycopg[binary]>=3.2,<4
+psycopg-pool>=3.2,<4
