@@ -23,7 +23,8 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from . import analysis, settings
+import analysis
+import settings
 from .db import Database, IntegrityError, backend_label, close_pool, get_db, init_db, ts
 from .security import (
     DUMMY_HASH, close_session, current_user, hash_password, login_throttle, register_throttle,
